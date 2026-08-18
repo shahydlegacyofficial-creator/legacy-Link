@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.LegacyLink" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">#2dd4a8</item>
+        <item name="colorAccent">#2dd4a8</item>
+        <item name="android:windowBackground">#0c0f12</item>
+        <item name="android:textColorPrimary">#dde6ea</item>
+    </style>
+</resources>
