@@ -1,0 +1,17 @@
+{
+  "package_name": "mv.legacy.link",
+  "version_name": "2.1.0",
+  "version_code": 6,
+  "developer_name": "Legacy Studios",
+  "support_email": "legacystudiosofficial@gmail.com",
+  "default_language": "en-US",
+  "category_suggestion": "Tools",
+  "privacy_url": "https://shahydlegacyofficial-creator.github.io/legacy-Link/privacy.html",
+  "support_url": "https://shahydlegacyofficial-creator.github.io/legacy-Link/",
+  "deletion_url": "https://shahydlegacyofficial-creator.github.io/legacy-Link/deletion.html",
+  "target_sdk": 36,
+  "min_sdk": 26,
+  "intended_audience_suggestion": "18+",
+  "contains_ads": false,
+  "account_creation": false
+}
