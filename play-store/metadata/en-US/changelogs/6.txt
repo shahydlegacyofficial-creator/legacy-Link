@@ -1,0 +1,1 @@
+Introducing the Legacy Studios interface, searchable notification sources, QR and HTTPS pairing, clear notification-sharing consent, a privacy-policy link and local-data controls. Includes notification-access troubleshooting and Android 16 support.
