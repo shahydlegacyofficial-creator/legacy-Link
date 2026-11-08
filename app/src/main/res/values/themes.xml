@@ -1,8 +1,23 @@
 <resources>
-    <style name="Theme.LegacyLink" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">#2dd4a8</item>
-        <item name="colorAccent">#2dd4a8</item>
-        <item name="android:windowBackground">#0c0f12</item>
-        <item name="android:textColorPrimary">#dde6ea</item>
+    <style name="Theme.LegacyLink" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#AECDF7</item>
+        <item name="colorAccent">#AECDF7</item>
+        <item name="android:windowBackground">#0B0E13</item>
+        <item name="android:colorBackground">#0B0E13</item>
+        <item name="android:textColorPrimary">#F1F4F8</item>
+        <item name="android:textColorSecondary">#A0ADC0</item>
+        <item name="android:statusBarColor">#0B0E13</item>
+        <item name="android:navigationBarColor">#141922</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:fontFamily">@font/manrope</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="alertDialogTheme">@style/Theme.LegacyLink.Dialog</item>
+    </style>
+    <style name="Theme.LegacyLink.Dialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:colorBackground">#141922</item>
+        <item name="android:textColorPrimary">#F1F4F8</item>
+        <item name="android:textColorSecondary">#A0ADC0</item>
+        <item name="colorAccent">#AECDF7</item>
+        <item name="android:fontFamily">@font/manrope</item>
     </style>
 </resources>
