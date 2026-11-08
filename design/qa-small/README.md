@@ -1,0 +1,1 @@
+Final-APK end-to-end verification on an Android 16 (API 36) emulator at 720 × 1600, 320 dpi, font scale 1.15. The runtime checks use a local receiver and synthetic notifications. Screens may be scrolled to the controls under test. `result.json` records the exact tested APK SHA-256.
