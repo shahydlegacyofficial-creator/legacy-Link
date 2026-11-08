@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "apk_sha256": "e2328f15eecbaaa02fca6bdf1c9ad8960c757c657926254600e442dc1989f4ce",
+  "checks": [
+    "fresh install",
+    "private-by-default sources",
+    "app search",
+    "masked secret",
+    "QR scanner launch",
+    "manual pairing",
+    "unselected source blocked",
+    "selected source delivered",
+    "offline queue",
+    "pause blocks queued delivery",
+    "resume drains queue",
+    "no runtime crashes"
+  ],
+  "synthetic_events_received": 3
+}
