@@ -1,0 +1,82 @@
+[
+  {
+    "file": "01-overview.png",
+    "title": "Your phone. Your Legacy.",
+    "alt_text": "Selected notifications. One direct link. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/01-overview.png"
+  },
+  {
+    "file": "02-sources.png",
+    "title": "Choose what reaches Legacy.",
+    "alt_text": "Find your banking apps and other essentials. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/02-sources.png"
+  },
+  {
+    "file": "03-selected.png",
+    "title": "Your sources. Your decision.",
+    "alt_text": "Review exactly which apps are selected. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/03-selected.png"
+  },
+  {
+    "file": "04-pairing.png",
+    "title": "Pair once. Keep the link.",
+    "alt_text": "Scan a QR code or enter your HTTPS receiver. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/04-pairing.png"
+  },
+  {
+    "file": "05-disclosure.png",
+    "title": "Know what you share.",
+    "alt_text": "Review the disclosure before allowing access. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/05-disclosure.png"
+  },
+  {
+    "file": "06-paused.png",
+    "title": "A pause, on your terms.",
+    "alt_text": "Stop forwarding and queued delivery together. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/06-paused.png"
+  },
+  {
+    "file": "07-privacy.png",
+    "title": "Privacy, within reach.",
+    "alt_text": "Understand the link and your data controls. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/07-privacy.png"
+  },
+  {
+    "file": "08-clear-data.png",
+    "title": "Start fresh, when you choose.",
+    "alt_text": "Clear pairing, sources and waiting notifications. Captured from the Legacy Link Google Play interface.",
+    "size": [
+      1080,
+      1920
+    ],
+    "source_capture": "assets/raw-phone/08-clear-data.png"
+  }
+]
