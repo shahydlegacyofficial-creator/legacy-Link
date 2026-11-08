@@ -1,0 +1,29 @@
+Connect your phone to your Legacy AI assistant with a direct, personal notification link.
+
+Legacy Link is the Android companion for the Legacy AI ecosystem. Choose the apps that matter to you, pair with your own compatible assistant receiver, and let selected notification text reach your assistant without a separate notification relay.
+
+Choose your sources
+Select banking alerts, messages or other app notifications you want your assistant to receive. Search the installed-app list, review selected sources, or add a package name manually. No source is selected by default.
+
+Pair your assistant
+Scan a pairing QR code or enter your receiver's HTTPS address and pairing secret. A connection test confirms whether the receiver can be reached and accepts your secret. Secrets are hidden by default.
+
+Keep control of your link
+Pause forwarding with one switch. See how many notifications are waiting to send and when a notification was last delivered. Up to 200 undelivered events can stay on your phone while your receiver is unavailable. The app retries when it opens, the listener reconnects, the phone restarts, another selected notification arrives, or forwarding resumes.
+
+Understand what is shared
+Before notification access, Legacy Link explains how selected app names, notification titles, text and timestamps are sent to your chosen assistant, including while this app is closed. Notifications can contain financial information, private messages or one-time codes. Review your sources and the receiver's own privacy practices before enabling the link.
+
+Remove local data when you need to
+Clear the saved pairing, app selections, local queue and status from Settings. Copies already delivered to an assistant are controlled by that receiver and its connected services.
+
+What you need
+• Android 8.0 or later.
+• A compatible Legacy AI or other assistant receiver with a valid HTTPS address and the Legacy Link notification API.
+• Android notification access and your agreement to the in-app sharing disclosure.
+
+Legacy Link does not create a bank account, log in to your bank, initiate payments, or provide financial advice. It relays the notification text Android makes available. Some apps and Android versions hide sensitive content. Your assistant receiver is configured separately and is not included in this app.
+
+No ads, analytics SDK or mandatory Legacy Studios account.
+
+Support: legacystudiosofficial@gmail.com
