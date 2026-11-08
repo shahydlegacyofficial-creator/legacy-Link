@@ -25,6 +25,7 @@ class LegacyNotificationListener : NotificationListenerService() {
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
         sbn ?: return
+        if (!Prefs.consent(applicationContext) || !Prefs.enabled(applicationContext)) return
         val pkg = sbn.packageName ?: return
         if (pkg == packageName) return // never mirror our own
 

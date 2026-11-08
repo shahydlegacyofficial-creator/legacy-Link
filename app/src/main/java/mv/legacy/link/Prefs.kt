@@ -1,6 +1,7 @@
 package mv.legacy.link
 
 import android.content.Context
+import android.content.SharedPreferences
 
 /**
  * Everything the app remembers: where Legacy lives, the shared secret, which
@@ -16,13 +17,26 @@ object Prefs {
     private const val K_ENABLED = "enabled"
 
     private fun p(c: Context) = c.getSharedPreferences(FILE, Context.MODE_PRIVATE)
+    fun observe(c: Context, listener: SharedPreferences.OnSharedPreferenceChangeListener) = p(c).registerOnSharedPreferenceChangeListener(listener)
+    fun unobserve(c: Context, listener: SharedPreferences.OnSharedPreferenceChangeListener) = p(c).unregisterOnSharedPreferenceChangeListener(listener)
 
     fun host(c: Context): String = p(c).getString(K_HOST, "") ?: ""
     fun secret(c: Context): String = p(c).getString(K_SECRET, "") ?: ""
     fun enabled(c: Context): Boolean = p(c).getBoolean(K_ENABLED, true)
+    fun consent(c: Context): Boolean = p(c).getBoolean("privacy_consent_v1", false)
+    fun setConsent(c: Context, accepted: Boolean) = p(c).edit().putBoolean("privacy_consent_v1", accepted).apply()
+    fun clearLocalData(c: Context) = p(c).edit().clear().putBoolean(K_ENABLED, false).apply()
 
     fun setPairing(c: Context, host: String, secret: String) =
-        p(c).edit().putString(K_HOST, host.trimEnd('/')).putString(K_SECRET, secret).apply()
+        p(c).edit().putString(K_HOST, host.trimEnd('/')).putString(K_SECRET, secret)
+            .remove("connection_check").remove("last_check").apply()
+
+    fun connectionCheck(c: Context): String = p(c).getString("connection_check", "") ?: ""
+    fun lastCheck(c: Context) = p(c).getLong("last_check", 0L)
+    fun setConnectionCheck(c: Context, result: String) = p(c).edit()
+        .putString("connection_check", result).putLong("last_check", System.currentTimeMillis()).apply()
+    fun lastDelivery(c: Context) = p(c).getLong("last_delivery", 0L)
+    fun recordDelivery(c: Context) = p(c).edit().putLong("last_delivery", System.currentTimeMillis()).apply()
 
     fun setEnabled(c: Context, on: Boolean) = p(c).edit().putBoolean(K_ENABLED, on).apply()
 

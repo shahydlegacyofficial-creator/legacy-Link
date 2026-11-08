@@ -29,6 +29,7 @@ object Sender {
 
     /** POST one JSON body. Returns true on a 2xx from Legacy. */
     private fun postOne(host: String, secret: String, body: String): Boolean {
+        if (Pairing.normalizeHost(host, BuildConfig.ALLOW_CLEARTEXT) == null) return false
         return try {
             val conn = (URL("$host/phone-notify").openConnection() as HttpURLConnection).apply {
                 requestMethod = "POST"
@@ -56,17 +57,18 @@ object Sender {
      */
     @Synchronized
     fun sendOrQueue(c: Context, event: String) {
-        if (!Prefs.isConfigured(c) || !Prefs.enabled(c)) return
+        if (!Prefs.isConfigured(c) || !Prefs.enabled(c) || !Prefs.consent(c)) return
         val host = Prefs.host(c)
         val secret = Prefs.secret(c)
 
         if (postOne(host, secret, event)) {
+            Prefs.recordDelivery(c)
             val q = Prefs.queue(c)
             if (q.isNotEmpty()) {
                 val remaining = ArrayList<String>()
                 var stillUp = true
                 for (item in q) {
-                    if (stillUp && postOne(host, secret, item)) continue
+                    if (stillUp && Prefs.enabled(c) && Prefs.consent(c) && postOne(host, secret, item)) { Prefs.recordDelivery(c); continue }
                     stillUp = false
                     remaining.add(item)
                 }
@@ -82,7 +84,7 @@ object Sender {
     /** Try the queue alone (called on reconnect / boot / app open). */
     @Synchronized
     fun flush(c: Context) {
-        if (!Prefs.isConfigured(c) || !Prefs.enabled(c)) return
+        if (!Prefs.isConfigured(c) || !Prefs.enabled(c) || !Prefs.consent(c)) return
         val q = Prefs.queue(c)
         if (q.isEmpty()) return
         val host = Prefs.host(c)
@@ -90,7 +92,7 @@ object Sender {
         val remaining = ArrayList<String>()
         var stillUp = true
         for (item in q) {
-            if (stillUp && postOne(host, secret, item)) continue
+            if (stillUp && Prefs.enabled(c) && Prefs.consent(c) && postOne(host, secret, item)) { Prefs.recordDelivery(c); continue }
             stillUp = false
             remaining.add(item)
         }
@@ -100,6 +102,7 @@ object Sender {
     /** A pairing test that says WHAT went wrong, not just pass/fail.
      *  Returns one of: "ok" | "unreachable" | "auth" | "http:<code>". */
     fun test(host: String, secret: String): String {
+        if (Pairing.normalizeHost(host, BuildConfig.ALLOW_CLEARTEXT) == null) return "https_required"
         val h = host.trimEnd('/')
         // 1) Can we reach Legacy at all? (no secret needed for the ping)
         val reachable = try {
@@ -127,4 +130,7 @@ object Sender {
             when { code in 200..299 -> "ok"; code == 401 -> "auth"; else -> "http:$code" }
         } catch (e: Exception) { "unreachable" }
     }
+
+    @Synchronized
+    fun clearLocalData(c: Context) = Prefs.clearLocalData(c)
 }

@@ -15,9 +15,9 @@ object QrScannerActivity {
         raw ?: return null
         return try {
             val o = JSONObject(raw)
-            val host = o.optString("host").trim()
+            val host = Pairing.normalizeHost(o.optString("host"), BuildConfig.ALLOW_CLEARTEXT) ?: return null
             val secret = o.optString("secret").trim()
-            if (host.isBlank() || secret.isBlank() || secret.any { it == '\r' || it == '\n' }) {
+            if (!Pairing.validSecret(secret)) {
                 null
             } else {
                 host to secret
