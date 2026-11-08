@@ -1,0 +1,105 @@
+{
+  "title.txt": {
+    "characters": 11,
+    "limit": 30
+  },
+  "short_description.txt": {
+    "characters": 77,
+    "limit": 80
+  },
+  "full_description.txt": {
+    "characters": 2425,
+    "limit": 4000
+  },
+  "changelogs/6.txt": {
+    "characters": 248,
+    "limit": 500
+  },
+  "artwork": {
+    "phone_images": 8,
+    "phone_size": [
+      1080,
+      1920
+    ],
+    "icon": [
+      512,
+      512
+    ],
+    "feature": [
+      1024,
+      500
+    ],
+    "mode": "RGB, no alpha"
+  },
+  "personal_emulator": {
+    "status": "passed",
+    "apk_sha256": "9cc227adf1796e722b3d4f46176a620b2c8ac092b07a54778fb3c1281e828089",
+    "checks": [
+      "fresh install",
+      "private-by-default sources",
+      "app search",
+      "masked secret",
+      "QR scanner launch",
+      "manual pairing",
+      "affirmative disclosure and decline",
+      "unselected source blocked",
+      "selected source delivered",
+      "offline queue",
+      "pause blocks queued delivery",
+      "resume drains queue",
+      "restricted-settings helper and App info",
+      "local data reset stops forwarding",
+      "no runtime crashes"
+    ],
+    "synthetic_events_received": 3
+  },
+  "play_emulator": {
+    "status": "passed",
+    "apk_sha256": "f7062e7262ba92e0c9855384488f7e02fefe3a3de16922edf011a1662e77198e",
+    "device": "Android 16 / API 36 emulator",
+    "capture_size": [
+      1080,
+      1920
+    ],
+    "checks": [
+      "signed Play release installs",
+      "store screenshots captured from actual UI",
+      "two selected sources saved",
+      "HTTPS-only form rejects HTTP without saving pairing",
+      "disclosure visible and can be declined",
+      "pause control",
+      "privacy and local deletion controls",
+      "restricted-settings helper opens App info",
+      "affirmative disclosure opens OS permission settings",
+      "no runtime crashes"
+    ],
+    "scope": "UI and transport validation; external HTTPS receiver and real bank app require owner testing."
+  },
+  "play_manifest": {
+    "package": "mv.legacy.link",
+    "version": "2.1.0",
+    "version_code": 6,
+    "target_sdk": 36,
+    "min_sdk": 26,
+    "cleartext": false,
+    "backup": false,
+    "debuggable": false
+  },
+  "personal_checks": {
+    "unit_tests": 1,
+    "failures": 0,
+    "lint_errors": 0,
+    "lint_warnings": 19
+  },
+  "play_checks": {
+    "unit_tests": 1,
+    "failures": 0,
+    "lint_errors": 0,
+    "lint_warnings": 19
+  },
+  "limitations": [
+    "External HTTPS assistant and actual bank notifications require owner testing.",
+    "Android restricted-settings approval must be completed on the user's device.",
+    "Owner must confirm receiver/downstream AI data practices and provide private reviewer access in Play Console."
+  ]
+}

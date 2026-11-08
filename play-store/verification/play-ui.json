@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "apk_sha256": "f7062e7262ba92e0c9855384488f7e02fefe3a3de16922edf011a1662e77198e",
+  "device": "Android 16 / API 36 emulator",
+  "capture_size": [
+    1080,
+    1920
+  ],
+  "checks": [
+    "signed Play release installs",
+    "store screenshots captured from actual UI",
+    "two selected sources saved",
+    "HTTPS-only form rejects HTTP without saving pairing",
+    "disclosure visible and can be declined",
+    "pause control",
+    "privacy and local deletion controls",
+    "restricted-settings helper opens App info",
+    "affirmative disclosure opens OS permission settings",
+    "no runtime crashes"
+  ],
+  "scope": "UI and transport validation; external HTTPS receiver and real bank app require owner testing."
+}
