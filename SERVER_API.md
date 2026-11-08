@@ -13,7 +13,7 @@ The assistant can display a QR code containing this JSON object:
 }
 ```
 
-`host` must be an `http://` or `https://` base URL. Do not add a trailing route. The app adds `/phone-ping` and `/phone-notify` itself.
+The Google Play flavor requires an `https://` base URL with a valid certificate. The personal flavor also supports `http://` for encrypted private-network setups. Do not add a trailing route. The app adds `/phone-ping` and `/phone-notify` itself. For the Play QR, encode the HTTPS receiver address rather than the HTTP example above.
 
 Use at least 32 random bytes for `secret`. Do not hard-code a real secret in the app, source repository, screenshots, or logs.
 

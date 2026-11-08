@@ -2,6 +2,19 @@
 
 All notable changes to Legacy Link are documented here.
 
+## 2.1.0 - 2026-11-08
+
+- Added a Google Play submission kit, signed AAB, eight phone images, feature graphic, store icon, listing copy and reviewer documentation.
+- Updated to target Android 16 / API 36 and handle system-bar/keyboard insets.
+- Added separate HTTPS-only Play and private-network personal flavors.
+- Added affirmative notification-sharing consent, public privacy links, local data deletion and disabled device-transfer/backup rules.
+- Added notification-access troubleshooting with an App info shortcut for Android restricted settings and a direct listener-permission settings link.
+
+## 2.0.0 - 2026-11-08
+
+- Redesigned native Overview, Apps and Settings screens with Legacy Studios branding, Manrope typography and a geometric L / angular-A icon.
+- Added source search and filters, saved/tested connection feedback, queue counts and a last-delivery timestamp.
+
 ## 1.3.0 - 2026-08-18
 
 ### Added

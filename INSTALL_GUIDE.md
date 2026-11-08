@@ -1,86 +1,38 @@
-# Legacy Link install guide
+# Install and connect Legacy Link 2.1
 
-This guide connects an Android phone to Legacy AI, JARVIS, or another compatible assistant running on a computer.
+## Choose the build
 
-## 1. Connect the phone and computer privately
+- Personal installation: `play-store/builds/Legacy-Link-2.1.0-personal.apk`. Supports HTTPS or HTTP over an encrypted private network such as Tailscale. Debug-signed using the same local debug identity as the earlier personal APK.
+- Google Play: `play-store/builds/Legacy-Link-2.1.0-play.aab` is for the publisher to upload to Play Console. The Play build requires a valid HTTPS receiver. An AAB is not a file you tap to install directly.
 
-Tailscale is the recommended network path.
+The APK supports Android 8.0 and newer. Copy the personal APK to your phone, open it, and approve installation from your browser/file manager if Android requests it.
 
-1. Install [Tailscale](https://tailscale.com/download) on the computer and sign in.
-2. Install Tailscale from Google Play on the phone and use the same account.
-3. In the computer's Tailscale app, note its `100.x.x.x` address or MagicDNS name.
-4. Keep the assistant running and listening on port `3000` or your configured port.
+## Set up the receiver
 
-The receiver must provide the routes described in [SERVER_API.md](SERVER_API.md).
+Run Legacy AI or another compatible receiver providing GET /phone-ping and authenticated POST /phone-notify. Use your receiver's HTTPS address for the Play build. For the personal build, both devices can use the same private Tailscale network and the receiver's http://100.x.x.x:3000 address. Plain HTTP is not encrypted outside an encrypted network.
 
-## 2. Put the source on GitHub
+See [SERVER_API.md](SERVER_API.md) for the contract and [build/signing guidance](play-store/documentation/BUILD_AND_SIGNING.md) for HTTPS proxy setup.
 
-1. Extract the GitHub-ready ZIP.
-2. Create a new GitHub repository named `legacy-link`.
-3. Upload everything **inside** the extracted `legacy-link` folder. The repository root should contain `app`, `.github`, `README.md`, and `settings.gradle.kts`.
-4. Commit the files to the `main` branch.
-5. Open **Actions → Build Legacy Link APK**. The workflow starts after the first push, or you can select **Run workflow**.
-6. Open the successful run and download the `legacy-link-debug-apk` artifact.
-7. Extract the artifact to get `app-debug.apk`.
+## Connect the phone
 
-If GitHub asks whether to enable Actions for the repository, enable them before running the workflow.
+1. Open Settings in Legacy Link. Scan the receiver's pairing QR or enter its address and pairing secret, then Save & test connection.
+2. Review the notification-sharing disclosure and choose I agree if you want to proceed.
+3. Grant Legacy Link access in Android's notification-access settings.
+4. In Apps, select the banking or other sources you want to share. The default selection is empty.
+5. Leave Notification forwarding enabled. Post a harmless notification from a selected app and verify it reaches the intended receiver.
 
-## 3. Install the APK
+## “App was denied access”
 
-1. Copy `app-debug.apk` to the phone using USB, Tailscale file transfer, or another private method.
-2. Tap the APK on the phone.
-3. If Android blocks the install, allow **Install unknown apps** for the file manager or browser you used.
-4. Complete the installation and open **Legacy Link**.
+Android may block sensitive permissions for a sideloaded APK. If you trust your build, open Settings → Apps → Legacy Link → More/three-dot menu → Allow restricted settings, follow Android's prompt, then return to notification access. In Legacy Link 2.1, Settings → Notification access blocked? opens an explanation and an App info shortcut.
 
-The Actions artifact is debug-signed for personal testing. Use a private production signing key before wider distribution.
+Full guide: [NOTIFICATION_ACCESS.md](NOTIFICATION_ACCESS.md). Device-management or manufacturer policies can prevent access; the app cannot override Android. It also cannot bypass banking-app or OS notification redaction.
 
-## 4. Pair Legacy Link
+## Queue and local data
 
-1. Tap **Grant notification access**.
-2. Find **Legacy Link**, turn access on, and confirm Android's warning.
-3. In the assistant, open its phone-link settings and display the pairing QR.
-4. Tap **Scan pairing QR** in the app and scan it. You can also enter the host and secret manually.
-5. Tap **Save & test connection**.
-6. Tap **Choose apps** and select only the apps whose notifications the assistant should receive.
+Up to 200 undelivered events can be kept on the phone. Pausing forwarding pauses queued delivery. Deselecting a source stops future capture but does not erase old queued entries. Settings → Clear local data removes the pairing, sources, queue, consent and local status, and pauses the link. Copies already sent must be deleted through the receiver's controls.
 
-No apps are selected by default. Forwarding starts only after you make a selection.
+## Update/signature conflicts
 
-## 5. Confirm delivery
+Android only updates apps signed with the same identity. The Play signing identity differs from the personal debug identity. If replacing an installation requires uninstalling, its pairing and queue will be removed; preserve anything needed and pair again afterward.
 
-Send a test notification from one selected app. Legacy Link should show that it is connected and the assistant should receive the event within a few seconds.
-
-If the computer is asleep or offline, the phone stores up to 200 recent events and retries later. Turning **Mirroring on** off pauses new delivery and queue retries.
-
-## Troubleshooting
-
-### “Can't reach Legacy”
-
-- Confirm both devices appear in the same Tailscale account.
-- Use the computer's `http://100.x.x.x:3000` address, not the browser HTTPS port unless your server supports it.
-- Confirm Legacy/JARVIS is running and `GET /phone-ping` returns a `2xx` response.
-- Allow the assistant's Node.js or server process through Windows Firewall on **Private** networks.
-- From the phone browser, open `http://YOUR-PC-IP:3000/phone-ping`. It should return JSON such as `{"ok":true}`.
-
-### “Reached Legacy, but the secret is wrong”
-
-- Generate or display a fresh pairing secret on the assistant.
-- Re-scan the QR or carefully replace the secret in the app.
-- Do not include spaces or extra line breaks.
-
-### No notifications arrive
-
-- Re-open **Grant notification access** and verify Legacy Link is enabled.
-- Open **Choose apps** and confirm the source app is ticked.
-- Make sure **Mirroring on** is enabled.
-- Some notification types, including persistent music controls and ongoing service notices, are intentionally ignored.
-
-### The app picker does not show an app
-
-Use **Add another app by package name** at the bottom of the picker. Android package visibility is intentionally limited to launchable apps.
-
-### GitHub Actions fails
-
-- Confirm `.github/workflows/build-apk.yml` was uploaded.
-- Confirm the repository uses a `main` branch.
-- Re-run the failed job once to rule out a temporary dependency-download failure.
-- Open the failed **Lint and build APK** step and copy its error when asking for help.
+Support: legacystudiosofficial@gmail.com. Do not include real notifications, financial details or secrets in a support message.
