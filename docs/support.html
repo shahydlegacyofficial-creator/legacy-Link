@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Legacy Link support · Legacy Studios</title><meta name="description" content="Legacy Link Android companion: support, privacy and user data controls."><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">Legacy Link</a><nav aria-label="Support navigation"><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="deletion.html">Delete data</a></nav></header><main><h1>Legacy Link support</h1>
+<p>Legacy Link is the Android companion for the Legacy AI assistant ecosystem, developed by Legacy Studios.</p>
+<p>Support and privacy email: legacystudiosofficial@gmail.com</p>
+<h2>Set up your link</h2>
+<ol><li>Run a compatible assistant receiver. The Google Play build needs a valid HTTPS endpoint implementing GET /phone-ping and authenticated POST /phone-notify.</li><li>Pair with the QR in your assistant&#x27;s Phone link settings, or enter the assistant address and pairing secret.</li><li>Review the notification-sharing disclosure and grant Android notification access.</li><li>Select the banking or other apps you want to share. No source is selected automatically.</li><li>Leave forwarding enabled. The assistant must remain reachable from the phone.</li></ol>
+<p>The personal APK also supports HTTP over an encrypted private network such as Tailscale. The Google Play build requires HTTPS. Legacy Link itself does not include or host your assistant receiver.</p>
+<h2>Notification access is denied</h2>
+<p>Use Settings → Notification access blocked? in the app. Follow the restricted-settings instructions in the notification-access guide linked below. The app cannot override Android&#x27;s permission decision.</p>
+<h2>Connection fails</h2>
+<p>Confirm the address, certificate, port, pairing secret, network reachability and receiver routes. A rejected secret requires a fresh secret from the assistant. The Play build cannot pair with a plain HTTP address. Do not put a real server secret in a public issue.</p>
+<h2>Notifications are missing</h2>
+<p>Check the source selection, forwarding switch, in-app agreement and Android notification access. Only new selected notifications are captured. Ongoing notifications are skipped. Android, the source app, a work profile or device policy may hide sensitive content. Offline events are kept in a local queue of up to 200 and retried when the link is active again.</p>
+<h2>Privacy and deletion</h2>
+<p>Use Settings → Privacy policy for the full policy. Settings → Clear local data removes the phone&#x27;s pairing, queue and selections, and pauses forwarding. It does not erase copies already sent to your chosen assistant.</p>
+<p>Privacy: <a href="https://shahydlegacyofficial-creator.github.io/legacy-Link/privacy.html">https://shahydlegacyofficial-creator.github.io/legacy-Link/privacy.html</a></p>
+<p>Deletion: <a href="https://shahydlegacyofficial-creator.github.io/legacy-Link/deletion.html">https://shahydlegacyofficial-creator.github.io/legacy-Link/deletion.html</a></p>
+<p>Notification-access help: <a href="https://shahydlegacyofficial-creator.github.io/legacy-Link/notification-access.html">https://shahydlegacyofficial-creator.github.io/legacy-Link/notification-access.html</a></p>
+<h2>Contacting support</h2>
+<p>Include the app version, Android version, phone model, whether you installed the Play or personal build, and steps that reproduce the problem. Replace addresses and notification text with harmless examples. Never include bank passwords, balances, account identifiers, pairing secrets or one-time codes.</p></main><footer>Legacy Studios · <a href="mailto:legacystudiosofficial@gmail.com">legacystudiosofficial@gmail.com</a><br>Updated 8 November 2026 · No advertising or analytics scripts.</footer></body></html>
